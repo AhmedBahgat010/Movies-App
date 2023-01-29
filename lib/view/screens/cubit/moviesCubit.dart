@@ -13,13 +13,10 @@ class MoviesCubit extends Cubit<MoviesStates> {
 
   MoviesCubit(this.moviesReposetory) : super(MoviesInitial());
 
-  // static MoviesCubit? get(context) => BlocProvider.of(context);
-
-
   List<Results>? getAllMovies(){
-    moviesReposetory.getAllMovies().then((cracter) {
-      emit(MoviesLoaded(cracter!));
-      myMovies = cracter;
+    moviesReposetory.getAllMovies().then((movies) {
+      emit(MoviesLoaded(movies!));
+      myMovies = movies;
     });
     return myMovies;
 

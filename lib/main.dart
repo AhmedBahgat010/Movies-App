@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/view/screens/all_movies.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/view/screens/cubit/moviesCubit.dart';
-
 import 'core/style/theme.dart';
-
 import 'data/repository/character_reposety.dart';
 import 'data/web_services/api_character.dart';
 
@@ -16,8 +14,6 @@ void main() async{
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(  designSize: const Size(360, 690),

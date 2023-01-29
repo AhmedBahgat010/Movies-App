@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movies/core/style/my_colors.dart';
 import 'package:movies/data/model/movie.dart';
+import 'package:movies/view/screens/moviesdetailsScreen.dart';
+
+import '../../core/resource/navigator.dart';
 
 class MoviesItem extends StatelessWidget {
   // final MoviesModel movie;
@@ -15,25 +18,27 @@ class MoviesItem extends StatelessWidget {
       margin: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
       padding: EdgeInsetsDirectional.all(4),
       decoration: BoxDecoration(
-        color: AppColor.white,
+        color: AppColor.green,
         borderRadius: BorderRadius.circular(8),
       ),
-      child:  InkWell(
+      child: InkWell(
         onTap: () {
-          // Navigator.pushNamed(context, characterDetailsScreen ,arguments: character );
+          navigateTo(
+              context,
+              MoviesDetailsScreen(
+                movie: movie,
+              ));
         },
         child: GridTile(
           child: Container(
             color: AppColor.gray,
-            child: Image.network(
-                    "https://image.tmdb.org/t/p/w500${movie.backdropPath}"),
-//             child: FadeInImage.assetNetwork(
-//               width: double.infinity,
-//               height: double.infinity,
-//               placeholder: 'assets/images/loading.gif',
-// image: "https://image.tmdb.org/t/p/w500/c6BEspznv2528qaOGzvqtpktn1J.jpg",
-//               fit: BoxFit.cover,
-//             ),
+            child: FadeInImage.assetNetwork(
+              width: double.infinity,
+              height: double.infinity,
+              placeholder: 'assets/images/loading.gif',
+              image: "https://image.tmdb.org/t/p/w500${movie.posterPath}",
+              fit: BoxFit.cover,
+            ),
           ),
           footer: Container(
             width: double.infinity,
@@ -43,7 +48,7 @@ class MoviesItem extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  "character.name",
+                  " ${movie.originalTitle}",
                   style: const TextStyle(
                     height: 1.3,
                     fontSize: 16,
@@ -54,9 +59,14 @@ class MoviesItem extends StatelessWidget {
                   maxLines: 2,
                   textAlign: TextAlign.center,
                 ),
-                Icon(
-                  Icons.star_rate_sharp,
-                  color: Colors.amberAccent,
+                Text(
+                  "${movie.releaseDate}",
+                  style: const TextStyle(
+                    height: 1.3,
+                    fontSize: 16,
+                    color: AppColor.green,
+                    fontWeight: FontWeight.bold,
+                  ),
                 )
               ],
             ),
